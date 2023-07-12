@@ -14,42 +14,53 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Book
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private int $id;
+	/**
+	 * @ORM\Id
+	 * @ORM\GeneratedValue
+	 * @ORM\Column(type="integer")
+	 */
+	private int $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $name;
+	/**
+	 * Имя книги
+	 * @ORM\Column(type="string", length=255)
+	 */
+	private string $name;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $author;
+	/**
+	 * Автор
+	 * @ORM\Column(type="string", length=255)
+	 */
+	private string $author;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $publisher;
+	/**
+	 * Издатель
+	 * @ORM\Column(type="string", length=255)
+	 */
+	private string $publisher;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private string $genre;
+	/**
+	 * Жанр
+	 * @ORM\Column(type="string", length=255)
+	 */
+	private string $genre;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private int $length;
+	/**
+	 * Кол-во страниц
+	 * @ORM\Column(type="integer")
+	 */
+	private int $pages;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+	/**
+	 * Кол-во на полках
+	 * @ORM\Column(type="integer")
+	 */
+	private int $countInStock;
+
+	public function getId(): ?int
+	{
+		return $this->id;
+	}
 
 	/**
 	 * @return string
@@ -118,16 +129,34 @@ class Book
 	/**
 	 * @return int
 	 */
-	public function getLength(): int
+	public function getPages(): int
 	{
-		return $this->length;
+		return $this->pages;
 	}
 
 	/**
-	 * @param int $length
+	 * @param int $pages
 	 */
-	public function setLength(int $length): void
+	public function setPages(int $pages): void
 	{
-		$this->length = $length;
+		$this->pages = $pages;
 	}
+
+	/**
+	 * @return int
+	 */
+	public function getCountInStock(): int
+	{
+		return $this->countInStock;
+	}
+
+	/**
+	 * @param int $countInStock
+	 */
+	public function setCountInStock(int $countInStock): void
+	{
+		$this->countInStock = $countInStock;
+	}
+
+
 }

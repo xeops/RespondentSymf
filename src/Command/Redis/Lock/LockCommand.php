@@ -21,6 +21,11 @@ class LockCommand extends Command
 
 	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
-		
+		//TODO lock
+
+
+		sleep(10);
+		$output->writeln("Proceed");
+		return Command::SUCCESS;
 	}
 }
