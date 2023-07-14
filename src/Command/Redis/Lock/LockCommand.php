@@ -21,8 +21,12 @@ class LockCommand extends Command
 
 	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
-		//TODO lock
-
+        $lock = $this->redis->set('APP_SINGLE_LOCK', 1, 'NX', 'EX', 10);
+        if (!$lock)
+        {
+            $output->writeln("Already running");
+            return Command::SUCCESS;
+        }
 
 		sleep(10);
 		$output->writeln("Proceed");
