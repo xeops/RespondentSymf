@@ -4,13 +4,18 @@ namespace App\Command\Redis\Cache;
 
 use Predis\Client;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ClearRedisFixture extends Command
 {
+    protected function configure(): void
+    {
+        $this->addArgument('database', InputArgument::REQUIRED, 'Specified database for user cache');
+    }
 
-	private Client $redis;
+    private Client $redis;
 
 	public function __construct(Client $redis)
 	{
@@ -22,11 +27,8 @@ class ClearRedisFixture extends Command
 
 	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
-        $users = $this->redis->keys('REDIS_CACHE_USER:*');
-        foreach ($users as $user)
-        {
-            $this->redis->del($user);
-        }
+        $this->redis->select($input->getArgument('database'));
+        $this->redis->flushdb();
 
 		$output->writeln("Removed all elements from cache");
 		return Command::SUCCESS;

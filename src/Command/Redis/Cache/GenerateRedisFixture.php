@@ -16,6 +16,7 @@ class GenerateRedisFixture extends Command
 	protected function configure(): void
 	{
 		$this
+            ->addArgument('database', InputArgument::REQUIRED, 'Specified database for user cache')
 			->addArgument('count', InputArgument::OPTIONAL, 'Count of users to create', 10000);
 	}
 
@@ -31,6 +32,8 @@ class GenerateRedisFixture extends Command
 
 	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
+        $this->redis->select($input->getArgument('database'));
+
 		foreach (UsersGenerator::generateUsers($input->getArgument('count')) as $user)
 		{
 			$this->createCache($user);
