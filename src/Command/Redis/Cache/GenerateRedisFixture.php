@@ -40,6 +40,6 @@ class GenerateRedisFixture extends Command
 
 	private function createCache(User $user): void
 	{
-		$this->redis->set("REDIS_CACHE:{$user->getId()}", $user->getName());
+		$this->redis->set("REDIS_CACHE_USER:{$user->getId()}", $user->getName());
 	}
 }

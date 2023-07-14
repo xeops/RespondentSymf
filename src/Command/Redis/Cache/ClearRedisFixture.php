@@ -22,6 +22,11 @@ class ClearRedisFixture extends Command
 
 	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
+        $users = $this->redis->keys('REDIS_CACHE_USER:*');
+        foreach ($users as $user)
+        {
+            $this->redis->del($user);
+        }
 
 		$output->writeln("Removed all elements from cache");
 		return Command::SUCCESS;
