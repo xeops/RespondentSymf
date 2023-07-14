@@ -3,6 +3,7 @@
 namespace App\Command\Redis\Cache;
 
 use App\Model\User\User;
+use App\Model\User\UserRedisHelper;
 use App\Model\User\UsersGenerator;
 use Predis\Client;
 use Symfony\Component\Console\Command\Command;
@@ -16,7 +17,6 @@ class GenerateRedisFixture extends Command
 	protected function configure(): void
 	{
 		$this
-            ->addArgument('database', InputArgument::REQUIRED, 'Specified database for user cache')
 			->addArgument('count', InputArgument::OPTIONAL, 'Count of users to create', 10000);
 	}
 
@@ -32,17 +32,24 @@ class GenerateRedisFixture extends Command
 
 	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
-        $this->redis->select($input->getArgument('database'));
+        $userKeys = [];
 
 		foreach (UsersGenerator::generateUsers($input->getArgument('count')) as $user)
 		{
-			$this->createCache($user);
+			$userKeys[] = $this->createCache($user);
 		}
+
+        $this->redis->set(UserRedisHelper::REDIS_CACHE_KEY, UserRedisHelper::encodeUserKeys($userKeys));
+
 		return Command::SUCCESS;
 	}
 
-	private function createCache(User $user): void
+	private function createCache(User $user): string
 	{
-		$this->redis->set("REDIS_CACHE_USER:{$user->getId()}", $user->getName());
+        $userKey = "REDIS_CACHE_USER:{$user->getId()}";
+
+		$this->redis->set($userKey, $user->getName());
+
+        return $userKey;
 	}
 }
