@@ -2,7 +2,6 @@
 
 namespace App\Command\Redis\Cache;
 
-use App\Model\User\UserRedisHelper;
 use Predis\Client;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -23,9 +22,7 @@ class ClearRedisFixture extends Command
 
 	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
-        $userKeys = $this->redis->get(UserRedisHelper::REDIS_CACHE_KEY);
-        $users = UserRedisHelper::decodeUserKeys($userKeys);
-        $this->redis->del($users);
+        $this->redis->del('REDIS_CACHE');
 
 		$output->writeln("Removed all elements from cache");
 		return Command::SUCCESS;
