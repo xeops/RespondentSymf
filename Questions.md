@@ -4,7 +4,6 @@
 ## Redis
 1. Используя Redis запретить выполнение команды `\App\Command\Redis\Lock\LockCommand`
 в нескольких потоках (mutex)
-
 2. Есть 2 команды
    + `\App\Command\Redis\Cache\GenerateRedisFixture`  генерирует 
    подобие кеша. 
