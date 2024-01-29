@@ -2,8 +2,8 @@
 # Вопросы к собеседованию
 
 ## Redis
-1. Сделать с помощью Redis команду `\App\Command\Redis\Lock\LockCommand`
-невозможной к выполнению более чем в 1 поток
+1. Используя Redis запретить выполнение команды `\App\Command\Redis\Lock\LockCommand`
+в нескольких потоках (mutex)
 2. Есть 2 команды
    + `\App\Command\Redis\Cache\GenerateRedisFixture`  генерирует 
    подобие кеша. 
@@ -14,10 +14,8 @@
 
 ## База данных
 1. Библиотека. Есть 2 сущности (`\App\Entity\Book`, `\App\Entity\User`).
-Необходимо реализовать связь между двумя таблицами 
-на примере реальной библиотеки
-2. Добавьте индекс поиска для метода 
-`\App\Repository\BookRepository::findByAuthorInGenre`
+Необходимо реализовать связь между двумя таблицами на примере реальной библиотеки
+2. Добавьте индекс для запроса в методе `\App\Repository\BookRepository::findByAuthorInGenre`
 3. Исправьте команду `\App\Command\DataBase\IsolationsCommand`, чтобы запуск
 команды в двух потоках не видели сущности друг друга.
 

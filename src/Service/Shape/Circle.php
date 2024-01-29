@@ -16,7 +16,7 @@ class Circle implements ShapeInterface
 
 	public function draw(): string
 	{
-		return str_pad("", $this->radius, "*");
+		return "";
 	}
 
 	public function setDimensions(int ...$args): Circle
