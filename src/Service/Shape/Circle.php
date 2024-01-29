@@ -14,6 +14,16 @@ class Circle implements ShapeInterface
 		$this->logger = $logger;
 	}
 
+	/**
+	 * @return string
+	 *
+	 * radius = 3
+	 *    **
+	 *   ****
+	 *  ******
+	 *   ****
+	 *    **
+	 */
 	public function draw(): string
 	{
 		return "";
