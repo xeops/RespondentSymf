@@ -22,5 +22,5 @@
 интерфейс `\App\Service\Shape\ShapeInterface`;
 2. Исправить команду `\App\Command\Php\DrawWeekCommand` которая выдает в
 последнем выводе неправильную дату;
-3. Реализовать метод `draw` интерфейса `ShapeInterface` в любом классе
+3. Реализовать метод `draw` интерфейса `\App\Service\Shape\ShapeInterface` в любом классе
 реализации.
