@@ -18,9 +18,9 @@
 команды не видели сущности друг друга.
 
 ## PHP
-1. В команде `\App\Command\Shape\ShapeListCommand` вывести все названия классов, реализующих
+1. В команде `\App\Command\Shape\ShapeListCommand` вывести все названия классов, реализующих 
 интерфейс `\App\Service\Shape\ShapeInterface`;
-2. Исправить команду `\App\Command\Php\DrawWeekCommand` которая в
-последнем выводе выводит неправильную дату;
-3. Реализовать метод `draw` интерфейса `\App\Service\Shape\ShapeInterface` в любом классе
+2. Исправить команду `\App\Command\Php\DrawWeekCommand` которая выдает в
+последнем выводе неправильную дату;
+3. Реализовать метод `draw` интерфейса `ShapeInterface` в любом классе
 реализации.
