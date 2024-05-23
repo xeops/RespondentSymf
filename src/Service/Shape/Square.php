@@ -14,6 +14,17 @@ class Square implements ShapeInterface
 		$this->logger = $logger;
 	}
 
+	/**
+	 * @return string
+	 *
+	 * sideLength = 5
+	 *
+	 *  *****
+	 *  *****
+	 *  *****
+	 *  *****
+	 *  *****
+	 */
 	public function draw(): string
 	{
 		return "";

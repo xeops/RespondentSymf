@@ -6,7 +6,7 @@ use Psr\Log\LoggerInterface;
 
 class Rectangle implements ShapeInterface
 {
-	private int $length;
+	private int $height;
 	private int $width;
 	private LoggerInterface $logger;
 
@@ -15,6 +15,14 @@ class Rectangle implements ShapeInterface
 		$this->logger = $logger;
 	}
 
+	/**
+	 * @return string
+	 *
+	 * heigth = 3, width = 5
+	 *      *****
+	 *      *****
+	 *      *****
+	 */
 	public function draw(): string
 	{
 		return "";
@@ -22,7 +30,7 @@ class Rectangle implements ShapeInterface
 
 	public function setDimensions(int ...$args): ShapeInterface
 	{
-		list($this->length, $this->width) = $args;
+		list($this->height, $this->width) = $args;
 		return $this;
 	}
 }
