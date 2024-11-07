@@ -85,7 +85,7 @@ $task = $taskManager->getNextTask();
 
 ```sql
 select *
-from products
+from orders
 where customer_email = 'supplier1@me'
   and supplier_email = 'metroCC@org'
   
@@ -221,7 +221,7 @@ $newCalendar = clone $calendar;
 echo $newCalendar->getDate()->modify('+1 year')->format('Y');
 echo $calendar->getDate()->format('Y');
 ```
-Вопрос. Какие 2 года выведет скрипт `temporary.php` и почему оба 2025 ?
+Вопрос. Какие 2 года выведет скрипт `temporary.php` ?
 
 Как сделать последовательность 2025 2024?
 
